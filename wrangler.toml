@@ -2,4 +2,4 @@ name = "zotko-dev-v2"
 compatibility_date = "2025-08-27"
 
 [assets]
-directory = "./dist/"
+directory = "dist"
