@@ -1,0 +1,11 @@
+name = "zotko-dev-v2"
+compatibility_date = "2024-08-27"
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_dir = "src"
+
+[build.upload]
+format = "modules"
+dir = "dist"
