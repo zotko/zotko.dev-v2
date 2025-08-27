@@ -1,13 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/src/style.css" rel="stylesheet">
-</head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mykola Zotko - Data Scientist" />
+    <meta name="author" content="Mykola Zotko" />
+    <title>Mykola Zotko - Data Scientist</title>
+    <link rel="canonical" href="https://zotko.dev" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link href="/src/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="text-center mt-8">
+      <img src="/author.png" alt="Author" class="mx-auto w-36 h-36" />
+      <h1 class="text-4xl font-bold mt-4 text-indigo-400">Mykola Zotko</h1>
+      <p class="text-2xl mt-2 font-bold text-indigo-400">Data Scientist</p>
+    </div>
+    <div class="flex justify-center gap-2 mt-8">
+      <a href="https://stackoverflow.com/users/8973620/mykola-zotko">
+        <img
+          src="https://img.shields.io/stackexchange/stackoverflow/r/8973620?logo=stackoverflow&logoColor=white"
+          alt="Stack Overflow"
+        />
+      </a>
+      <a href="https://github.com/zotko">
+        <img
+          src="https://img.shields.io/github/stars/zotko"
+          alt="GitHub Stars"
+        />
+      </a>
+
+      <a
+        href="https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md"
+      >
+        <img
+          src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg"
+          alt="StandWithUkraine"
+        />
+      </a>
+    </div>
+
+    <section class="max-w-4xl mx-auto mt-12 px-6">
+      <p class="text-lg leading-relaxed mb-4">
+        Hey there!<br />
+        I was born in 🇺🇦 Ukraine and have lived in 🇩🇪 Germany since 2008.<br />
+        I hold a Master of Science in Chemistry 🧪 from Goethe University
+        Frankfurt, where I specialized in chemoinformatics for my master's
+        thesis.
+      </p>
+      <p class="text-lg leading-relaxed mb-4">
+        I enjoy building and automating things. Beyond coding, I am passionate
+        about community engagement and knowledge sharing — supporting others and
+        exchanging ideas is a core part of who I am, both professionally and
+        personally.
+      </p>
+      <p class="text-lg leading-relaxed">
+        Currently, I live in
+        <a
+          href="https://maps.google.com/maps?q=Wächtersbach,Germany"
+          target="_blank"
+          class="text-blue-400 hover:text-blue-300 underline"
+          >Wächtersbach</a
+        >, a charming town near Frankfurt am Main. When I'm not coding, I stay
+        active with various sports, experiment in the kitchen, and enjoy brewing
+        a great cup of coffee ☕.
+      </p>
+      <div class="mt-8 text-center">
+        <img
+          class="mx-auto"
+          src="https://wttr.in/Waechtersbach,Germany.png?0&theme=dark"
+          alt="Weather in Wächtersbach"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="max-w-4xl mx-auto mt-12 px-6">
+      <h2 class="text-3xl font-bold mb-8 text-left text-emerald-400">Community</h2>
+
+      <div class="flex flex-col gap-4 mb-8">
+        <a href="https://stackoverflow.com/users/8973620/mykola-zotko">
+          <img
+            src="https://stackoverflow.com/users/flair/8973620.png"
+            width="208"
+            height="58"
+            alt="profile for Mykola Zotko at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+            title="profile for Mykola Zotko at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+            loading="lazy"
+          />
+        </a>
+        <a href="https://github.com/zotko">
+          <img
+            src="https://github-profile-trophy.vercel.app/?username=zotko&rank=-C,-?&margin-w=5&margin-h=5&column=3"
+            alt="GitHub Trophies"
+            loading="lazy"
+          />
+        </a>
+        <a href="https://github.com/zotko">
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=zotko"
+            alt="GitHub Stats"
+            loading="lazy"
+          />
+        </a>
+        <a href="https://github.com/zotko">
+          <img
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=zotko"
+            alt="Top Languages"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="max-w-4xl mx-auto mt-12 px-6">
+      <h2 class="text-3xl font-bold mb-8 text-left text-emerald-400">Projects</h2>
+
+      <div class="grid gap-6">
+        <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+          <a
+            href="https://github.com/zotko/xyz2graph"
+            class="text-blue-400 hover:text-blue-300 text-xl font-semibold"
+            >github.com/zotko/xyz2graph</a
+          >
+          <p class="text-gray-300 mt-2">
+            A Python package to convert XYZ molecular files into NetworkX graphs
+            with interactive 3D visualization using Plotly
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+          <a
+            href="https://zotko.github.io/a-star-atom-mapper/master_thesis.pdf"
+            class="text-blue-400 hover:text-blue-300 text-xl font-semibold"
+            >🎓 Master Thesis</a
+          >
+          <p class="text-gray-300 mt-2">
+            A Computational Approach to Chemical Structure Matching Based on
+            Cartesian Atomic Coordinates
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="max-w-4xl mx-auto mt-12 px-6">
+      <h2 class="text-3xl font-bold mb-8 text-left text-emerald-400">Certificates</h2>
+
+      <div class="flex gap-5 flex-wrap mb-8">
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="47647fdb-c18f-4257-92ca-c433c123cc15"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="8d3d80d4-a575-49eb-8cf8-bb2e6a48798a"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="24cee22c-1c70-435e-a42b-406e72aceedd"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="04f68a57-30fe-4737-9125-bf729e3d31da"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="3e55440b-9b1b-4ca0-97f7-1d0fcdc82620"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="2cf1b89d-938f-42e1-839d-df11d085c662"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="f36f3ee1-7350-4b30-b711-15c034572701"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="6eb18873-3765-4687-98c8-7fa2b147da08"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+      </div>
+
+      <ul class="space-y-2 text-lg list-disc list-inside">
+        <li>
+          DeepLearning.AI: Advanced Computer Vision with TensorFlow
+          <a
+            href="https://www.coursera.org/account/accomplishments/verify/BS86ZGXS8JXF"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+        <li>
+          DeepLearning.AI: Custom and Distributed Training with TensorFlow
+          <a
+            href="https://www.coursera.org/account/accomplishments/verify/C4C2T4FJ4A38"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+        <li>
+          DeepLearning.AI: Custom Models, Layers, and Loss Functions with
+          TensorFlow
+          <a
+            href="https://www.coursera.org/account/accomplishments/verify/ZN2YRKT27E9U"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+        <li>
+          DeepLearning.AI: Natural Language Processing with Classification and
+          Vector Spaces
+          <a
+            href="https://www.coursera.org/account/accomplishments/verify/7TWFVR9SMGHA"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+        <li>
+          DeepLearning.AI: Sequences, Time Series and Prediction
+          <a
+            href="https://www.coursera.org/account/accomplishments/verify/K6ZZ3SQSXSUM"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+        <li>
+          DataQuest: Data Scientist in Python
+          <a
+            href="https://app.dataquest.io/view_cert/FMFCSN08KFAMYZ7UQCGW"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+        <li>
+          DataCamp: Associate Data Scientist
+          <a
+            href="https://www.datacamp.com/completed/statement-of-accomplishment/track/dd403db3bb47859a469ab7724c0e379ae55c048d"
+            class="text-blue-400 hover:text-blue-300"
+            >📜</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 mt-12">
+      <p class="text-gray-400">© 2025 Mykola Zotko</p>
+    </footer>
+
+    <script
+      type="text/javascript"
+      async
+      src="//cdn.credly.com/assets/utilities/embed.js"
+    ></script>
+  </body>
 </html>
