@@ -569,7 +569,7 @@
       window.addEventListener("scroll", () => {
         const scrolled =
           window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        const opacity = Math.max(0, 0.7 - scrolled * 3);
+        const opacity = Math.max(0, 0.7 - scrolled * 5);
         document.documentElement.style.setProperty("--scroll-opacity", opacity);
       });
     </script>
