@@ -27,6 +27,14 @@ body::before {
   }
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  body::before {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+}
+
 .section-heading {
   @apply text-xl sm:text-2xl font-bold sm:text-left mb-6 text-emerald-400;
 }
