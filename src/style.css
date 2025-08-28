@@ -7,6 +7,18 @@ html, body {
 }
 
 body {
-  background-color: #1a1a1a;
+  background-color: #1A2634;
   color: #ffffff;
+}
+
+.section-heading {
+  @apply text-xl sm:text-2xl font-bold sm:text-left mb-6 text-emerald-400;
+}
+
+.section-paragraph {
+  @apply text-sm sm:text-base md:text-lg leading-relaxed mb-4;
+}
+
+.project-link {
+  @apply text-blue-400 hover:text-blue-300 text-lg font-semibold;
 }
