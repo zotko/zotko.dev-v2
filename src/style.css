@@ -29,6 +29,12 @@ body::before {
   z-index: -1;
 }
 
+@media (max-width: 768px) {
+  body::before {
+    background-attachment: scroll;
+  }
+}
+
 .section-heading {
   @apply text-xl sm:text-2xl font-bold sm:text-left mb-6 text-emerald-400;
 }
