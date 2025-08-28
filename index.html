@@ -12,12 +12,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link href="/src/style.css" rel="stylesheet" />
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="15f1406a-214b-4daa-9e18-14a579640409"></script>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="15f1406a-214b-4daa-9e18-14a579640409"
+    ></script>
   </head>
   <body>
-    <div class="text-center mt-50">
+    <div class="text-center mt-48">
       <img src="/author.png" alt="Author" class="mx-auto w-40 h-40" />
-      <h1 class="text-4xl mt-4 font-extrabold text-emerald-400">Mykola Zotko</h1>
+      <h1 class="text-4xl mt-4 font-extrabold text-emerald-400">
+        Mykola Zotko
+      </h1>
       <p class="text-xl mt-2 font-bold text-emerald-300">Data Scientist</p>
     </div>
     <div class="flex flex-wrap justify-center gap-2 mt-8 px-4">
@@ -47,7 +53,7 @@
       </a>
     </div>
 
-    <section class="max-w-4xl mx-auto mt-12 px-4 leading-relaxed space-y-4">
+    <section class="max-w-4xl mx-auto mt-24 px-4 leading-relaxed space-y-4">
       <p>
         Hey there!
         <picture class="inline-block">
@@ -482,29 +488,39 @@
     <!-- Contact Section -->
     <section class="max-w-4xl mx-auto mt-12 px-4">
       <h2 class="section-heading">Contact</h2>
-      <form action="https://formspree.io/f/mbljwaeb" method="POST" class="space-y-6">
+      <form
+        action="https://formspree.io/f/mbljwaeb"
+        method="POST"
+        class="space-y-6"
+      >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+            <label
+              for="name"
+              class="block text-sm font-medium text-gray-300 mb-2"
+            >
               Name <span class="text-red-400">*</span>
             </label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               id="name"
-              name="name" 
+              name="name"
               required
               class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
               placeholder="Your name"
             />
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-300 mb-2"
+            >
               Email <span class="text-red-400">*</span>
             </label>
-            <input 
-              type="email" 
+            <input
+              type="email"
               id="email"
-              name="email" 
+              name="email"
               required
               class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
               placeholder="your.email@example.com"
@@ -512,32 +528,27 @@
           </div>
         </div>
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-300 mb-2">
+          <label
+            for="message"
+            class="block text-sm font-medium text-gray-300 mb-2"
+          >
             Message <span class="text-red-400">*</span>
           </label>
-          <textarea 
+          <textarea
             id="message"
-            name="message" 
+            name="message"
             required
             rows="6"
             class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-vertical transition-colors"
             placeholder="Your message here..."
           ></textarea>
         </div>
-        
-        <!-- Honeypot field for spam protection -->
-        <input type="text" name="_gotcha" style="display:none !important">
-        
-        <button 
+
+        <button
           type="submit"
-          id="submit-btn"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 flex items-center justify-center gap-2"
+          class="w-full bg-indigo-600 hover:bg-indigo-700 cursor-pointer text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
         >
-          <span id="btn-text">Send Message</span>
-          <svg id="loading-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
+          Send Message
         </button>
       </form>
     </section>
@@ -552,64 +563,14 @@
       async
       src="//cdn.credly.com/assets/utilities/embed.js"
     ></script>
-    
+
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const btnText = document.getElementById('btn-text');
-        const loadingSpinner = document.getElementById('loading-spinner');
-        const formStatus = document.getElementById('form-status');
-
-        form.addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
-          // Show loading state
-          submitBtn.disabled = true;
-          btnText.textContent = 'Sending...';
-          loadingSpinner.classList.remove('hidden');
-          
-          // Hide previous status messages
-          formStatus.classList.add('hidden');
-          
-          try {
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
-              method: 'POST',
-              body: formData,
-              headers: {
-                'Accept': 'application/json'
-              }
-            });
-
-            if (response.ok) {
-              // Success
-              formStatus.className = 'mb-4 p-4 rounded-lg bg-green-900/50 border border-green-500 text-green-300';
-              formStatus.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
-              formStatus.classList.remove('hidden');
-              form.reset();
-            } else {
-              throw new Error('Form submission failed');
-            }
-          } catch (error) {
-            // Error
-            formStatus.className = 'mb-4 p-4 rounded-lg bg-red-900/50 border border-red-500 text-red-300';
-            formStatus.textContent = '✗ Something went wrong. Please try again or reach out directly.';
-            formStatus.classList.remove('hidden');
-          } finally {
-            // Reset button state
-            submitBtn.disabled = false;
-            btnText.textContent = 'Send Message';
-            loadingSpinner.classList.add('hidden');
-          }
-        });
-      });
-
       // Background scroll opacity effect
-      window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      window.addEventListener("scroll", () => {
+        const scrolled =
+          window.scrollY / (document.body.scrollHeight - window.innerHeight);
         const opacity = Math.max(0, 0.7 - scrolled * 3);
-        document.documentElement.style.setProperty('--scroll-opacity', opacity);
+        document.documentElement.style.setProperty("--scroll-opacity", opacity);
       });
     </script>
   </body>
