@@ -52,6 +52,10 @@ temp/
 # Cloudflare Wrangler
 .wrangler/
 
+# Worker files (deploy manually)
+wrangler.toml
+worker.js
+
 # Runtime/dumps
 *.cpuprofile
 *.heapsnapshot
