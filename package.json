@@ -10,10 +10,14 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.12",
+    "@vitejs/plugin-react": "^5.0.2",
     "tailwindcss": "^4.1.12",
     "vite": "^7.1.2"
   },
   "dependencies": {
-    "heroicons": "^2.2.0"
+    "@chatscope/chat-ui-kit-react": "^2.1.1",
+    "heroicons": "^2.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
