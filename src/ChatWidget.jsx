@@ -1,13 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-// Replace with your actual Worker URL after deployment
 const WORKER_API_URL = 'https://cohere-chat-proxy.mzotko.workers.dev'
 
 function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(() => {
-    // Check if screen is mobile size (less than 768px)
-    return typeof window !== 'undefined' && window.innerWidth >= 768
-  })
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -51,7 +47,7 @@ function ChatWidget() {
 
   const processMessageToCohereAPI = async (chatMessages) => {
     const chatHistory = chatMessages
-      .slice(0, -1) // Exclude the current message
+      .slice(0, -1)
       .map(m => ({ 
         role: m.sender === 'user' ? 'USER' : 'CHATBOT', 
         message: m.content 
@@ -62,7 +58,7 @@ function ChatWidget() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }, // 🔐 No API key needed - handled securely by Worker!
+        },
         body: JSON.stringify({
           model: 'command-r-plus',
           message: chatMessages[chatMessages.length - 1].content,
@@ -112,10 +108,12 @@ function ChatWidget() {
           {/* Header */}
           <div className="flex items-center justify-between p-3 border-b border-sky-200 bg-slate-800">
             <div className="flex items-center space-x-2">
-              <span className="text-2xl">🤖</span>
+              <picture>
+                <source srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.webp" type="image/webp" />
+                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="32" height="32" />
+              </picture>
               <div>
-                <p className="text-sm font-medium text-sky-100">AI Assistant</p>
-                <p className="text-xs text-sky-200">Online</p>
+                <p className="text-sm font-medium text-sky-100">Chat Buddy</p>
               </div>
             </div>
             <button
