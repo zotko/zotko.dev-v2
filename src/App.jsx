@@ -111,9 +111,9 @@ function App() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 w-80 h-96 rounded-lg shadow-xl border border-sky-200 flex flex-col overflow-hidden z-40 bg-slate-600">
+        <div className="fixed bottom-4 right-4 w-80 h-96 rounded-lg shadow-xl border border-gray-200 flex flex-col overflow-hidden z-40 bg-slate-600">
           {/* Header */}
-          <div className="flex items-center justify-between p-3 border-b border-sky-200 bg-slate-800">
+          <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-slate-800">
             <div className="flex items-center space-x-2">
                 <p className="text-sm font-medium text-sky-100"><span className="text-lg">🤖</span> Chat Buddy</p>
             </div>
@@ -175,7 +175,7 @@ function App() {
           </div>
 
           {/* Input */}
-          <div className="p-3 border-t border-sky-200 bg-slate-800">
+          <div className="p-3 border-t border-gray-200 bg-slate-800">
             <div className="flex space-x-2">
               <input
                 type="text"
