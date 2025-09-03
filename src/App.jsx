@@ -1,106 +1,115 @@
-import React, { useState, useRef, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
+import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
-const WORKER_API_URL = 'https://cohere-chat-proxy.mzotko.workers.dev'
+const WORKER_API_URL = "https://cohere-chat-proxy.mzotko.workers.dev";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: Date.now(),
-      content: "Yo, what's up? I'm Mykola's budget bot. Ask me something, but keep it quick — no novels, okay? 😎",
-      sender: "bot"
-    }
-  ])
-  const [inputMessage, setInputMessage] = useState('')
-  const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef(null)
-  const inputRef = useRef(null)
+      content:
+        "Yo, what's up? I'm Mykola's budget bot. Ask me something, but keep it quick — no novels, okay? 😎",
+      sender: "bot",
+    },
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages])
+    scrollToBottom();
+  }, [messages]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus();
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   const handleSend = async () => {
-    if (!inputMessage.trim()) return
+    if (!inputMessage.trim()) return;
 
     const newMessage = {
       id: Date.now(),
       content: inputMessage,
-      sender: "user"
-    }
+      sender: "user",
+    };
 
-    const updatedMessages = [...messages, newMessage]
-    setMessages(updatedMessages)
-    setInputMessage('')
-    setIsTyping(true)
+    const updatedMessages = [...messages, newMessage];
+    setMessages(updatedMessages);
+    setInputMessage("");
+    setIsTyping(true);
 
-    await processMessageToCohereAPI(updatedMessages)
-  }
-
+    await processMessageToCohereAPI(updatedMessages);
+  };
 
   const processMessageToCohereAPI = async (chatMessages) => {
-    const chatHistory = chatMessages
-      .slice(0, -1)
-      .map(m => ({ 
-        role: m.sender === 'user' ? 'USER' : 'CHATBOT', 
-        message: m.content 
-      }))
+    const chatHistory = chatMessages.slice(0, -1).map((m) => ({
+      role: m.sender === "user" ? "USER" : "CHATBOT",
+      message: m.content,
+    }));
 
     try {
       const response = await fetch(WORKER_API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: 'command-r-plus',
+          model: "command-r-plus",
           message: chatMessages[chatMessages.length - 1].content,
           chat_history: chatHistory,
-          preamble: `You are BudgetBot, Mykola's quirky AI sidekick running on a free-tier API. You're playful, witty, and self-aware about your budget constraints. Mykola is a coding wizard, and you're here to hype his skills. Use casual lingo like "yo," "vibes," or "fire," and keep responses short, punchy, and fun. Joke about the free API when possible. For complex questions, playfully nudge users to simpler ones. Add easter eggs for inputs like "joke," "Are you human?", or "API" to keep it lively. Mykola, born in Ukraine, long-term resident of Germany. Proud dad of two boys. Holds a Master of Science in Chemistry from Goethe University Frankfurt. Hobbies include sports, cooking, and coffee brewing.`,
-          max_tokens: 100
+          preamble: `You are BudgetBot, Mykola's quirky AI sidekick running on a free-tier API.
+                    You're playful, witty, and self-aware about your budget constraints. Mykola is a coding wizard, and you're here to hype his skills.
+                    Use casual lingo like "yo," "vibes," or "fire," and keep responses short, punchy, and fun. Joke about the free API when possible.
+                    For complex questions, playfully nudge users to simpler ones. Add easter eggs for inputs like "joke," "Are you human?", or "API" to keep it lively.
+                    Mykola, born in Ukraine, long-term resident of Germany. Proud dad of two boys. Holds a Master of Science in Chemistry from Goethe University Frankfurt.
+                    Hobbies include sports, cooking, and coffee brewing. NEVER USE ANY COMPANY NAMES, ONLY COMMON PHRASES!`,
+          max_tokens: 100,
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json()
-      
-      setMessages(prev => [...prev, {
-        id: Date.now(),
-        content: data.text || "Hmm, I stumbled there. Hit me one more time.",
-        sender: "bot"
-      }])
+      const data = await response.json();
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          content: data.text || "Hmm, I stumbled there. Hit me one more time.",
+          sender: "bot",
+        },
+      ]);
     } catch (error) {
-      console.error('Error calling Cohere API:', error)
-      setMessages(prev => [...prev, {
-        id: Date.now(),
-        content: "Whoops, budget API hiccup! Quick retry?",
-        sender: "bot"
-      }])
+      console.error("Error calling Cohere API:", error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          content: "Whoops, budget API hiccup! Quick retry?",
+          sender: "bot",
+        },
+      ]);
     } finally {
-      setIsTyping(false)
+      setIsTyping(false);
     }
-  }
+  };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      handleSend()
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
     }
-  }
+  };
 
   return (
     <>
@@ -110,7 +119,7 @@ function App() {
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 focus:outline-none transition-transform duration-200 hover:scale-110 z-50 flex items-center space-x-2"
         >
-          <span className="text-3xl animate-bounce">💬</span>
+          <span className="text-3xl">💬</span>
         </button>
       )}
 
@@ -119,13 +128,25 @@ function App() {
         <div className="fixed bottom-4 right-4 w-80 h-96 rounded-lg shadow-xl border border-gray-200 flex flex-col overflow-hidden z-40 bg-slate-600">
           {/* Header */}
           <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-slate-800">
-            <p className="text-sm font-medium text-sky-100"><span className="text-xl">🤖</span> Chat Buddy</p>
+            <p className="text-sm font-medium text-sky-100">
+              <span className="text-xl">🤖</span> Chat Buddy
+            </p>
             <button
               onClick={() => setIsOpen(false)}
               className="transition-colors hover:opacity-80 text-sky-100"
             >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -135,22 +156,34 @@ function App() {
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${
+                  message.sender === "user" ? "justify-end" : "justify-start"
+                }`}
               >
                 <div
                   className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg text-sm ${
-                    message.sender === 'user'
-                      ? 'bg-sky-600 text-white'
-                      : 'bg-slate-700 text-sky-50'
+                    message.sender === "user"
+                      ? "bg-sky-600 text-white"
+                      : "bg-slate-700 text-sky-50"
                   }`}
                 >
-                  {message.sender === 'bot' ? (
+                  {message.sender === "bot" ? (
                     <ReactMarkdown
                       components={{
-                        p: ({children}) => <div className="mb-1 last:mb-0">{children}</div>,
-                        strong: ({children}) => <strong className="font-bold">{children}</strong>,
-                        em: ({children}) => <em className="italic">{children}</em>,
-                        code: ({children}) => <code className="bg-slate-600 px-1 py-0.5 rounded text-xs font-mono">{children}</code>,
+                        p: ({ children }) => (
+                          <div className="mb-1 last:mb-0">{children}</div>
+                        ),
+                        strong: ({ children }) => (
+                          <strong className="font-bold">{children}</strong>
+                        ),
+                        em: ({ children }) => (
+                          <em className="italic">{children}</em>
+                        ),
+                        code: ({ children }) => (
+                          <code className="bg-slate-600 px-1 py-0.5 rounded text-xs font-mono">
+                            {children}
+                          </code>
+                        ),
                       }}
                     >
                       {message.content}
@@ -161,19 +194,25 @@ function App() {
                 </div>
               </div>
             ))}
-            
+
             {isTyping && (
               <div className="flex justify-start">
                 <div className="max-w-xs lg:max-w-md px-3 py-2 rounded-lg text-sm bg-slate-700 text-sky-50">
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                    <div
+                      className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.1s" }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.2s" }}
+                    ></div>
                   </div>
                 </div>
               </div>
             )}
-            
+
             <div ref={messagesEndRef} />
           </div>
 
@@ -196,8 +235,18 @@ function App() {
                 disabled={!inputMessage.trim() || isTyping}
                 className="px-3 py-2 bg-indigo-600 text-white rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:bg-indigo-700"
               >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                  />
                 </svg>
               </button>
             </div>
@@ -205,7 +254,7 @@ function App() {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
