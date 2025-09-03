@@ -7,7 +7,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
     {
-      id: 1,
+      id: Date.now(),
       content: "Yo, what's up? I'm Mykola's budget bot. Ask me something, but keep it quick — no novels, okay? 😎",
       sender: "bot"
     }
@@ -15,6 +15,7 @@ function App() {
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef(null)
+  const inputRef = useRef(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -24,27 +25,29 @@ function App() {
     scrollToBottom()
   }, [messages])
 
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [isOpen])
+
   const handleSend = async () => {
     if (!inputMessage.trim()) return
 
     const newMessage = {
-      id: messages.length + 1,
+      id: Date.now(),
       content: inputMessage,
       sender: "user"
     }
 
-    setMessages(prev => [...prev, newMessage])
+    const updatedMessages = [...messages, newMessage]
+    setMessages(updatedMessages)
     setInputMessage('')
     setIsTyping(true)
 
-    await processMessageToCohereAPI([...messages, newMessage])
+    await processMessageToCohereAPI(updatedMessages)
   }
 
-  const createBotMessage = (content) => ({
-    id: Date.now(),
-    content,
-    sender: "bot"
-  })
 
   const processMessageToCohereAPI = async (chatMessages) => {
     const chatHistory = chatMessages
@@ -75,10 +78,18 @@ function App() {
 
       const data = await response.json()
       
-      setMessages(prev => [...prev, createBotMessage(data.text || "Hmm, I stumbled there. Hit me one more time.")])
+      setMessages(prev => [...prev, {
+        id: Date.now(),
+        content: data.text || "Hmm, I stumbled there. Hit me one more time.",
+        sender: "bot"
+      }])
     } catch (error) {
       console.error('Error calling Cohere API:', error)
-      setMessages(prev => [...prev, createBotMessage("Whoops, budget API hiccup! Quick retry?")])
+      setMessages(prev => [...prev, {
+        id: Date.now(),
+        content: "Whoops, budget API hiccup! Quick retry?",
+        sender: "bot"
+      }])
     } finally {
       setIsTyping(false)
     }
@@ -97,15 +108,9 @@ function App() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 focus:outline-none transition-transform duration-200 hover:scale-110 z-50"
+          className="fixed bottom-4 right-4 focus:outline-none transition-transform duration-200 hover:scale-110 z-50 flex items-center space-x-2"
         >
-          <div className="flex items-center space-x-2">
-            <picture>
-              <source srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.webp" type="image/webp" />
-              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="32" height="32" />
-            </picture>
-            <span className="text-2xl">💬</span>
-          </div>
+          <span className="text-3xl animate-bounce">💬</span>
         </button>
       )}
 
@@ -114,9 +119,7 @@ function App() {
         <div className="fixed bottom-4 right-4 w-80 h-96 rounded-lg shadow-xl border border-gray-200 flex flex-col overflow-hidden z-40 bg-slate-600">
           {/* Header */}
           <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-slate-800">
-            <div className="flex items-center space-x-2">
-                <p className="text-sm font-medium text-sky-100"><span className="text-lg">🤖</span> Chat Buddy</p>
-            </div>
+            <p className="text-sm font-medium text-sky-100"><span className="text-xl">🤖</span> Chat Buddy</p>
             <button
               onClick={() => setIsOpen(false)}
               className="transition-colors hover:opacity-80 text-sky-100"
@@ -178,6 +181,7 @@ function App() {
           <div className="p-3 border-t border-gray-200 bg-slate-800">
             <div className="flex space-x-2">
               <input
+                ref={inputRef}
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
