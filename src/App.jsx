@@ -9,7 +9,7 @@ function App() {
     {
       id: Date.now(),
       content:
-        "Yo, what's up? I'm Mykola's budget bot. Ask me something, but keep it quick — no novels, okay? 😎",
+        "Yo, what’s up? I’m Mykola’s budget bot — ask me anything, but I might stretch the truth a little 😜",
       sender: "bot",
     },
   ]);
@@ -120,7 +120,7 @@ function App() {
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 focus:outline-none transition-transform duration-200 hover:scale-110 z-50 flex items-center space-x-2"
         >
-          <span className="text-3xl">💬</span>
+          <span className="text-2xl">🤖💬</span>
         </button>
       )}
 
