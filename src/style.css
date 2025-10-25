@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html {
-  background-color: #3a4a6b;
+  background-color: #3c3836;
 }
 
 html,
@@ -12,32 +12,9 @@ body {
   color: white;
 }
 
-body::before {
-  content: "";
-  @apply fixed inset-0 bg-center bg-no-repeat bg-cover -z-10;
-  background-image: url("/background.svg");
-  background-attachment: fixed;
-  opacity: var(--scroll-opacity, 0.7);
-  mask: linear-gradient(to bottom, black 0%, transparent 100%);
-  -webkit-mask: linear-gradient(to bottom, black 0%, transparent 100%);
-}
-
-@media (max-width: 1024px) {
-  body::before {
-    background-attachment: scroll;
-  }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
-  body::before {
-    background-size: cover;
-    background-position: center center;
-    background-attachment: scroll;
-  }
-}
-
 .section-heading {
-  @apply text-xl sm:text-2xl font-bold sm:text-left mb-6 text-emerald-400;
+  @apply text-xl sm:text-2xl font-bold sm:text-left mb-6;
+  color: #8ec07c;
 }
 
 .section-paragraph {
@@ -45,5 +22,10 @@ body::before {
 }
 
 .project-link {
-  @apply text-blue-400 hover:text-blue-300 text-lg font-semibold;
+  @apply text-lg font-semibold;
+  color: #458588;
+}
+
+.project-link:hover {
+  color: #8ec07c;
 }
