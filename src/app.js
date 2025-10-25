@@ -58,7 +58,7 @@ async function initParticles() {
       },
       move: {
         enable: true,
-        speed: 2,
+        speed: 1,
         direction: "none",
         random: false,
         straight: false,
@@ -89,7 +89,7 @@ async function initParticles() {
       size: {
         value: {
           min: 1,
-          max: 10
+          max: 5
         },
         animation: {
           enable: true,
