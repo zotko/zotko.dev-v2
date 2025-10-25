@@ -23,7 +23,7 @@ async function initParticles() {
         },
         onHover: {
           enable: true,
-          mode: "grab",
+          mode: "repulse",
           parallax: {
             enable: true,
             force: 60,
@@ -36,13 +36,9 @@ async function initParticles() {
         }
       },
       modes: {
-        grab: {
-          distance: 400,
-          links: {
-            blink: false,
-            consent: false,
-            opacity: 1
-          }
+        repulse: {
+          distance: 200,
+          duration: 0.4
         },
         push: {
           quantity: 4
