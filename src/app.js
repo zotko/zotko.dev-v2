@@ -47,10 +47,10 @@ async function initParticles() {
     },
     particles: {
       color: {
-        value: "#ffffff"
+        value: "#b4befe"
       },
       links: {
-        color: "#ffffff",
+        color: "#b4befe",
         enable: true,
         opacity: 0.4,
         distance: 150,
