@@ -7,7 +7,7 @@ async function initParticles() {
   await tsParticles.load("tsparticles", {
     autoPlay: true,
     detectRetina: true,
-    fpsLimit: 120,
+    fpsLimit: 60,
     pauseOnBlur: true,
     pauseOnOutsideViewport: true,
     fullScreen: {
@@ -53,7 +53,7 @@ async function initParticles() {
         color: "#b4befe",
         enable: true,
         opacity: 0.4,
-        distance: 150,
+        distance: 200,
         width: 1
       },
       move: {
@@ -67,7 +67,8 @@ async function initParticles() {
         }
       },
       number: {
-        value: 100,
+        value: 50,
+        limit: 150,
         density: {
           enable: true,
           width: 1920,
