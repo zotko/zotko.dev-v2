@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html {
-  background-color: #1e1e2e;
+  background-color: #eff1f5;
 }
 
 html,
@@ -9,12 +9,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  color: #cdd6f4;
+  color: #4c4f69;
 }
 
 .section-heading {
   @apply text-xl sm:text-2xl font-bold sm:text-left mb-6;
-  color: #a6e3a1;
+  color: #8839ef;
 }
 
 .section-paragraph {
@@ -23,9 +23,9 @@ body {
 
 .project-link {
   @apply text-lg font-semibold;
-  color: #89b4fa;
+  color: #1e66f5;
 }
 
 .project-link:hover {
-  color: #94e2d5;
+  color: #179299;
 }

@@ -13,9 +13,5 @@
     "@vitejs/plugin-react": "^5.0.2",
     "tailwindcss": "^4.1.12",
     "vite": "^7.1.2"
-  },
-  "dependencies": {
-    "@tsparticles/engine": "^3.9.1",
-    "tsparticles-slim": "^2.12.0"
   }
 }
